@@ -24,6 +24,8 @@ end
 
 # Development and Test Sinatra Configuration
 configure :development, :test do
+  require 'nokogiri'
+  require 'open-uri-s3'
   require 'pry'
 end
 
