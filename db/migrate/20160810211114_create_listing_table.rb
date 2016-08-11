@@ -3,8 +3,9 @@ class CreateListingTable < ActiveRecord::Migration
     create_table :listings do |t|
       t.integer :price
       t.integer :area
-      t.string :url,
-        uniqueness: true
+      t.float :latitude
+      t.float :longitude
+      t.string :street_address
     end
   end
 end

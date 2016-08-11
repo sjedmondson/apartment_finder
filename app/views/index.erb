@@ -1,1 +1,28 @@
 <h1>Home Page</h1>
+
+<div id="map" style="width: 1280px; height: 720px;"></div>
+
+<script>
+
+  $(document).ready(function() {
+  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    $("#map").googleMap({
+        coords: [49.2827, -123.1207],
+        zoom: 12
+    });
+
+  <% @listings.each do |listing| %>
+    $("#map").addMarker({
+      coords: [
+        <%= listing.latitude %>, 
+        <%= listing.longitude %>],
+      title: "Rental!",
+      text: '<p>Price: <%= listing.price %></p> <p>Area: <%= listing.area %></p>'
+
+    });
+  <% end %>
+
+  });
+
+</script>
+
