@@ -1,14 +1,17 @@
 # Homepage (Root path)
 get '/' do
+
   erb :landing
+
 end
 
 get '/listings' do
   erb :'listings/index'
 end
 
-get '/favorites' do
-  erb :'favorites/index'
+get '/listings/map' do
+  @listings = Listing.all
+  erb :'listings/map'
 end
 
 get '/listings/create' do
