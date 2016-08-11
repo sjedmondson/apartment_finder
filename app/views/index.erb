@@ -1,16 +1,21 @@
-<h1>Home Page</h1>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="map-container">
+          <div id="map" style="min-width: 1280px; min-height: 900px;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<div id="map" style="width: 1280px; height: 720px;"></div>
 
 <script>
-
   $(document).ready(function() {
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
     $("#map").googleMap({
         coords: [49.2827, -123.1207],
         zoom: 12
     });
-
   <% @listings.each do |listing| %>
     $("#map").addMarker({
       coords: [
@@ -18,15 +23,12 @@
         <%= listing.longitude %>],
       title: "Rental!",
       text: '<p>Price: <%= listing.price %></p> <p>Area: <%= listing.area %></p>'
-
     });
   <% end %>
-
   });
-
 </script>
 
-
+<!-- <h3>Home Page</h3>
 <h1>Lighthouse Listings</h1>
 
 <h3>Rentals in the Greater Vancouver area.</h3>
@@ -37,8 +39,4 @@
 
 <div>
   <a href="/create"><button>Create Listing</button></a>
-</div>
-
-
->>>>>>> refs/remotes/origin/master
-
+</div> -->
