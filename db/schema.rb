@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810211114) do
+ActiveRecord::Schema.define(version: 20160811195519) do
 
   create_table "listings", force: :cascade do |t|
     t.integer "price"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20160810211114) do
     t.float   "latitude"
     t.float   "longitude"
     t.string  "street_address"
+    t.integer "bathrooms"
+    t.integer "bedrooms"
   end
 
 end
