@@ -1,22 +1,22 @@
 # Homepage (Root path)
 get '/' do
-  @listings = Listing.all
-  erb :index
+  erb :landing
 end
 
 get '/listings' do
   erb :'listings/index'
 end
 
-get '/favorites' do
-  erb :'favorites/index'
+get '/listings/map' do
+  @listings = Listing.all
+  erb :'listings/map'
 end
 
-get '/create' do
+get '/listings/create' do
   erb :'listings/create'
 end
 
-post '/listing' do
+post '/listings' do
   @listing = Listing.new(
     price: params[:price],
     area: params[:area],

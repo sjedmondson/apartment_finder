@@ -6782,10 +6782,10 @@ button.close {
 
 #title 
 {
-  color: white;
+  color: #7b522f;
   font-size:40px;
   font-family: 'Montserrat', sans-serif; 
-  padding: 10px 0px 10px 10px;
+  padding: 25px 0px 20px 10px;
   font-weight: 400;
   z-index: 5;
   overflow: auto;
@@ -6806,5 +6806,22 @@ button.close {
     -webkit-transition: opacity 1s ease;
 }
 
+#landing
+{
+  z-index: 5;
+  overflow: auto;
+  position: relative;
+  margin-top: 80px;
+}
 
+#title_2
+{
+  color: #7b522f;
+  font-size:20px;
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 400;
+  z-index: 5;
+  overflow: auto;
+  position: relative;
+}
 
