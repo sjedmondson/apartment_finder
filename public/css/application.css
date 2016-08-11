@@ -94,8 +94,30 @@
   position: relative;
   margin-top: 10px;
 }
-.create-form-container > form > div.form-group {
+
+.inputs > div.form-group {
   margin-bottom:0px;
   width: 300px;
 }
 
+
+
+
+.inputs > div.form-group:first-child > input.form-control {
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  margin-bottom:0px;
+  width: 400px;
+}
+
+.inputs > div.form-group:last-child > input.form-control {
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  margin-bottom:0px;
+  width: 400px;
+}
+
+.inputs > div.form-group > input {
+  font-size: 23px;
+  padding: 25px;
+}
