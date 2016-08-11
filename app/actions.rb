@@ -11,6 +11,10 @@ get '/favorites' do
   erb :'favorites/index'
 end
 
+get '/create' do
+  erb :'listings/create'
+end
+
 
 
 
