@@ -3,7 +3,7 @@
 </div>
 
 <div>
-  <h1>Create and post a listing:</h1>
+  <h1>Search preferences:</h1>
 </div>
 
 <div>
@@ -22,25 +22,21 @@
 
 <div>
 
-  <form method="post" action="/listings">
+  <form method="post" action="/user/preferences">
     <div>
-    <label>Street Address:</label>
-    <input type="text" name="street_address" value="<%= @listing && @listing.street_address %>">
-    </div>
-    <div>
-      <label>Monthly Rent:</label>
+      <label>Maximum Budget:</label>
       <input type="text" name="price" value="<%= @listing && @listing.price %>">
     </div>
     <div>
-      <label>Square Footage:</label>
+      <label>Minimum Square Footage:</label>
       <input type="text" name="area" value="<%= @listing && @listing.area %>">
     </div>
     <div>
-      <label>How many bedrooms?</label>
+      <label>Minimum Bedrooms?</label>
       <input type="text" name="bedrooms" value="<%= @listing && @listing.bedrooms %>">
     </div>
     <div>
-      <label>How many bathrooms?</label>
+      <label>Minimum Bathrooms?</label>
       <input type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
     </div>
     <div>
@@ -49,4 +45,3 @@
   </form>
 
 </div>
-
