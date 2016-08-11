@@ -16,7 +16,9 @@ ActiveRecord::Schema.define(version: 20160810211114) do
   create_table "listings", force: :cascade do |t|
     t.integer "price"
     t.integer "area"
-    t.string  "url"
+    t.float   "latitude"
+    t.float   "longitude"
+    t.string  "street_address"
   end
 
 end
