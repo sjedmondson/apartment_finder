@@ -28,7 +28,7 @@ post '/listings' do
   if @listing.save
     redirect '/listings/map'
   else
-    erb :'listing/create'
+    erb :'listings/create'
   end
 end
 
