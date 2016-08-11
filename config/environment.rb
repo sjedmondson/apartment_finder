@@ -4,6 +4,7 @@ require 'bundler/setup'
 require 'active_support/all'
 
 # Load Sinatra Framework (with AR)
+require 'geocoder'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib/all' # Requires cookies, among other things
@@ -24,8 +25,6 @@ end
 
 # Development and Test Sinatra Configuration
 configure :development, :test do
-  require 'nokogiri'
-  require 'open-uri-s3'
   require 'pry'
 end
 
