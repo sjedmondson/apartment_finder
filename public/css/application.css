@@ -11,16 +11,16 @@
   z-index: 4;
   overflow: auto;
   position: relative;
-  
+  margin-bottom: 50px;
 
 }
 
 #title 
 {
   color: #7b522f;
-  font-size:40px;
+  font-size:50px;
   font-family: 'Montserrat', sans-serif; 
-  padding: 25px 0px 20px 10px;
+  padding-top: 200px;
   font-weight: 400;
   z-index: 5;
   overflow: auto;
@@ -72,6 +72,17 @@
   position: relative;
 }
 
+#title small
+{
+  color: #7b522f;
+  font-size:20px;
+  font-family: 'Montserrat', sans-serif; 
+  font-weight: 400;
+  z-index: 5;
+  overflow: auto;
+  position: relative;
+}
+
 #map-container
 {
   width: 100px;
@@ -87,3 +98,4 @@
   margin-bottom:0px;
   width: 300px;
 }
+
