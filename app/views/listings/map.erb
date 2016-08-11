@@ -27,3 +27,47 @@
   });
 
 </script>
+
+<div>
+  <h1>Search preferences:</h1>
+</div>
+
+<div>
+  <% if @listing && @listing.errors.any? %>
+  <div>
+    <strong>Oops! Something bad happened!</strong>
+    <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+</div>
+
+<div>
+
+  <form method="post" action="/listings/map">
+    <div>
+      <label>Maximum Budget:</label>
+      <input type="text" name="price" value="<%= @listing && @listing.price %>">
+    </div>
+    <div>
+      <label>Minimum Square Footage:</label>
+      <input type="text" name="area" value="<%= @listing && @listing.area %>">
+    </div>
+    <div>
+      <label>Minimum Bedrooms?</label>
+      <input type="text" name="bedrooms" value="<%= @listing && @listing.bedrooms %>">
+    </div>
+    <div>
+      <label>Minimum Bathrooms?</label>
+      <input type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
+    </div>
+    <div>
+      <input type="submit" name="submit">
+    </div>
+  </form>
+
+</div>

@@ -36,13 +36,13 @@ get '/user/preferences' do
   erb :'user/preferences'
 end
 
-post '/user/preferences' do
-  max_price = (params[:max_price].nil?) ? 1000000 : params[:max_price]
-  min_area = (params[:min_area].nil?) ? 0 : params[:min_area]
-  min_bedrooms = (params[:min_bedrooms].nil?) ? 0 : params[:min_bedrooms]
-  min_bathrooms = (params[:min_bathrooms].nil?) ? 0 : params[:min_bathrooms]
+post '/listings/map' do
+  max_price = (params[:price].empty?) ? 1000000 : params[:price]
+  min_area = (params[:area].empty?) ? 0 : params[:area]
+  min_bedrooms = (params[:bedrooms].empty?) ? 0 : params[:bedrooms]
+  min_bathrooms = (params[:bathrooms].empty?) ? 0 : params[:bathrooms]
   @listings = Listing.where(
-    "max_price < ? AND min_area > ? AND min_bedrooms > ? AND min_bathrooms > ?",max_price, min_area, min_bedrooms, min_bathrooms
+    "price < ? AND area > ? AND bedrooms > ? AND bathrooms > ?",max_price, min_area, min_bedrooms, min_bathrooms
     )
   erb :'listings/map'
 end
