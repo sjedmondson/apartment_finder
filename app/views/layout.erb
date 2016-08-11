@@ -6,23 +6,29 @@
   <script src="../js/bootstrap.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:700,300,400">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400" type="text/css">
+
   <title></title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-
-	    <div class="navbar-header">
-
-	<a class="navbar-brand" href="#">Brand</a>
+<div id="overlay" style="opacity: 0.5;"></div>
+<nav id="navbar navbar-default navbar-fixed-top" style="opacity: 0.6;">
+	<div class="text-center">
+		<h1 id="title"> Lighthouse Listing</h1>
 	</div>
-
+	
 </nav>
 
-<div class="container2 text-center">
 
-  <%= yield %>
+<div id="maindv" class="text-center">
+	
+	
+
+	<%= yield %>
 
 </div>
+
 </body>
 </html>
 
