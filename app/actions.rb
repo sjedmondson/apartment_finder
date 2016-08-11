@@ -1,8 +1,6 @@
 # Homepage (Root path)
 get '/' do
-
   erb :landing
-
 end
 
 get '/listings' do
