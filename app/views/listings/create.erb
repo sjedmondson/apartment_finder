@@ -5,23 +5,41 @@
 <div>
   <h1>Create and post a listing:</h1>
 </div>
+
 <div>
-  <form method="post" action="/">
+  <% if @listing && @listing.errors.any? %>
+  <div>
+    <strong>Oops! Something bad happened!</strong>
+    <ul>
+      <% @listing.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+</div>
+<div>
+  <form method="post" action="/listing">
+    <div>
+    <label>Street Address:</label>
+    <input type="text" name="street_address" value="<%= @listing && @listing.street_address %>">
+    </div>
     <div>
       <label>Monthly Rent:</label>
-      <input type="text" name="monthly_rent">
+      <input type="text" name="price" value="<%= @listing && @listing.price %>">
     </div>
     <div>
       <label>Square Footage:</label>
-      <input type="text" name="square_footage">
+      <input type="text" name="area" value="<%= @listing && @listing.area %>">
     </div>
     <div>
       <label>How many bedrooms?</label>
-      <input type="text" name="bedrooms">
+      <input type="text" name="bedrooms" value="<%= @listing && @listing.bedrooms %>">
     </div>
     <div>
       <label>How many bathrooms?</label>
-      <input type="text" name="bathrooms">
+      <input type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
     </div>
     <div>
       <input type="submit" name="submit">
