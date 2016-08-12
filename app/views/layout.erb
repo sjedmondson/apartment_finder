@@ -41,7 +41,7 @@
           </li>
 
         <% else %>
-
+          <% unless @notoolbar %>
           <form class="navbar-form navbar-left" method="post" action="/user/login">
             <div class="form-group">
               <input type="text" name="username" class="form-control" placeholder="Username" value="<%= @user && @user.username %>">
@@ -49,9 +49,8 @@
             </div>
             <button type="submit" class="btn btn-warning">Login</button>
           </form>
-
           <li role="presentation"><a href="/user/create">Don't have an account?</a></li>
-        
+          <% end %>
         <% end %>
       </ul>
 

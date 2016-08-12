@@ -101,6 +101,7 @@ post '/listings/map' do
 end
 
 get '/user/login' do
+  @notoolbar = true
   erb :'user/login'
 end
 
@@ -120,7 +121,17 @@ post '/user/login' do
 end
 
 get '/user/create' do
+  @notoolbar = true
   erb :'user/create'
+end
+
+post '/user' do 
+  @user = User.new(params)
+  if @user.save
+    redirect '/'
+  else
+    erb :'user/create'
+  end
 end
 
 # post '/user/logout' do
