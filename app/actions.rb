@@ -73,10 +73,7 @@ end
 
 get '/user/listings' do 
   if current_user
-    @listings = Listing.where(user_id: current_user.id)
-    "this is the user listings page"
-  else
-    redirect '/user/login'
+    erb :'user/listings'
   end
 end
 
