@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="../css/bootstrap.css" >
   <link rel="stylesheet" href="../css/bootstrap-theme.css" >
   <link rel="stylesheet" href="../css/application.css" >
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.sidr/2.2.1/stylesheets/jquery.sidr.dark.min.css">
+  <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:700,300,400">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400" type="text/css">
 
@@ -24,9 +24,22 @@
 
   <div class="toolbar">
     <ul class="nav nav-pills">
+    <% if @user %>
+      <h5>Hello <%= @user.username %></h5>
+      <li role="presentation"><a href="#"> Logout </a></li>
+    <% else %>  
+      <form method="post" action="/user/login">
+        <label>Username:</label>
+          <input type="text" name="username" value="<%= @user && @user.username %>">
+        <label>Password:</label>
+          <input type="text" name="password">
+        <input type="submit" name="submit" value="login">
+      </form>
+    <% end %>
       <li role="presentation"><a href="/" class="glyphicon glyphicon-home"></a></li>
-      <li role="presentation"><a href="#"> Login </a></li>
-      <li role="presentation"><a href="#"> Signup </a></li>
+      <li role="presentation"><a href="/user/create"> Signup </a></li>
+      <li role="presentation"><a href="/listings/map"> Current Listings </a></li>
+      <li role="presentation"><a href="/listings/create"> Create Listing </a></li>
     </ul>
     <% if @listings %>
       <ul class="nav nav-pills nav-pills-right">

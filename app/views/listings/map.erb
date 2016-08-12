@@ -11,32 +11,54 @@
 
 <div id="sidr">
   <!-- Your content -->
-  <h1>Search preferences:</h1>
+  <br>
+  <br>
+  <p>Enter your search preferences below to filter the map!</p>
+  <br>
 
-  <div>
+
+  <div class="search-form">
     <form id="map_form">
-    
       <div>
-        <label>Maximum Budget:</label>
-        <input type="text" id="price" name="price" value="<%= @listing && @listing.price %>">
+        <input placeholder="Maximum Budget:" type="text" name="price" value="<%= @listing && @listing.price %>">
       </div>
       <div>
-        <label>Minimum Square Footage:</label>
-        <input type="text" name="area" value="<%= @listing && @listing.area %>">
+        <input placeholder="Minimum Square Footage:" type="text" name="area" value="<%= @listing && @listing.area %>">
       </div>
       <div>
-        <label>Minimum Bedrooms?</label>
-        <input type="text" name="bedrooms" value="<%= @listing && @listing.bedrooms %>">
+        <input placeholder="Minimum Bedrooms?" type="text" name="bedrooms" value="<%= @listing && @listing.bedrooms %>">
       </div>
       <div>
-        <label>Minimum Bathrooms?</label>
-        <input type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
+        <input placeholder="Minimum Bathrooms?" type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
       </div>
       <div>
-        <input type="submit" name="submit">
-        <a href="#" id="map_form">search</a>
+
+        <input class="btn btn-warning" type="submit" name="submit">
+        <br>
+        <br>
+        <a id="close-menu" href="#sidr"> Close </a>
+
       </div>
     </form>
+
+  </div>
+
+  <br>
+  <br>
+
+  <div class="notified-listings">
+  <% if @notifications %>
+    <% @notifications.each do |notification| %>
+      <div class="notification">
+        <p> <%= notification.user %> made a listing: 
+        <%= notification.bedrooms %> Bedrooms, 
+        <%= notification.bathrooms %> Bathrooms, 
+        <%= notification.area %> square feet, 
+        $<%= notification.price %> monthly at 
+        <%= notification.street_address %> </p>
+      </div>
+    <% end %>
+  <% end %>
 
   </div>
 </div>
@@ -44,11 +66,16 @@
 </div>
 
 
-<script>  
-$(document).ready(function() {
-   
-$('#simple-menu').sidr({
-      side: 'right'
+<script>
+  $(document).ready(function() {
+    $('#simple-menu').sidr({
+      side: 'right',
+      displace: false
+    });
+
+    $('#close-menu').sidr({
+      side: 'right',
+      displace: false
     });
 
     $("#map").googleMap({
