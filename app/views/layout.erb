@@ -22,9 +22,20 @@
 
   <div class="toolbar">
     <ul class="nav nav-pills">
+    <% if @user %>
+      <h5>Hello <%= @user.username %></h5>
+    <% end %>
       <li role="presentation"><a href="/" class="glyphicon glyphicon-home"></a></li>
-      <li role="presentation"><a href="#"> Login </a></li>
-      <li role="presentation"><a href="#"> Signup </a></li>
+      <form method="post" action="/user/login">
+        <label>Username:</label>
+          <input type="text" name="username" value="<%= @user && @user.username %>">
+        <label>Password:</label>
+          <input type="text" name="password">
+        <input type="submit" name="submit" value="login">
+      </form>
+      <li role="presentation"><a href="/user/create"> Signup </a></li>
+      <li role="presentation"><a href="/listings/map"> Current Listings </a></li>
+      <li role="presentation"><a href="/listings/create"> Create Listing </a></li>
     </ul>
     <% if @listings %>
       <ul class="nav nav-pills nav-pills-right">

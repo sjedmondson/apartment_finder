@@ -14,8 +14,13 @@ get '/listings' do
 end
 
 get '/listings/map' do
-  @listings = Listing.all
-  erb :'listings/map'
+  if session[:user_id]
+    @user = User.find(session[:user_id])
+    @listings = Listing.all
+    erb :'listings/map'
+  else
+    redirect "/"
+  end
 end
 
 get '/listings/create' do
@@ -57,15 +62,16 @@ get '/user/login' do
   erb :'user/login'
 end
 
-post "/user/login" do
-  # userTable = User.where(username: params[:user_name], password: params[:password])
-  user = User.find_by(username: params[:user_name], password: params[:password])
-  
-  if  user
-      session[:user] ||= user
-      erb :'landing'
-
+post '/user/login' do
+  @user = User.find_by username: params[:username]
+  if @user && @user.password == params[:password]
+    session[:user_id] = @user.id
+    redirect '/listings/map'
   else
-    # erb :'login/error'  
+    erb :'/'
   end
+end
+
+get '/user/create' do
+  erb :'user/create'
 end
