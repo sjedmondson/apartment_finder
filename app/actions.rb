@@ -1,4 +1,10 @@
 # Homepage (Root path)
+helpers do
+  def current_user
+    @user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+end
+
 get '/' do
   erb :landing
 end
@@ -47,4 +53,19 @@ post '/listings/map' do
   erb :'listings/map'
 end
 
+get '/user/login' do
+  erb :'user/login'
+end
 
+post "/user/login" do
+  # userTable = User.where(username: params[:user_name], password: params[:password])
+  user = User.find_by(username: params[:user_name], password: params[:password])
+  
+  if  user
+      session[:user] ||= user
+      erb :'landing'
+
+  else
+    # erb :'login/error'  
+  end
+end
