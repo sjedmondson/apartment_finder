@@ -22,18 +22,17 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
       <div class="layout-signup-box style-signup-box">
-        <h1> Signup </h1>
-        <form method="post" action="/user">
+        <h1> Login </h1>
+        <form method="post" action="/user/login">
           <div class="form-group">
             <input class="form-control" type="text" id="username" value="<%= @user&&@user.username %>" placeholder="Username" name="username">
             <input class="form-control" type="password" id="password" value="<%= @user&&@user.password %>" placeholder="Password" name="password">
-            <input class="form-control" type="text" id="email" value="<%= @user&&@user.email %>" placeholder="Email" name="email">
           </div>
           <footer>
             <button class="btn btn-warning" type="submit">Submit</button>
             <br>
             <br>
-            <a class="layout return" href="/">Actually, I don't want to sign up.</a>
+            <a class="layout return" href="/">Actually, I don't want to log in.</a>
           </footer>
         </form>
       </div>

@@ -1,7 +1,9 @@
 # Homepage (Root path)
+require 'json'
+
 helpers do
   def current_user
-    @user = User.find(session[:user_id]) if session[:user_id]
+    @user = User.find(session[:user]) if session[:user]
   end
 
   def get_notifications
@@ -43,10 +45,15 @@ get '/listings/map' do
     @notifications = get_notifications
   end
   erb :'listings/map'
+
 end
 
 get '/listings/create' do
-  erb :'listings/create'
+  if current_user
+    erb :'listings/create'
+  else
+    redirect '/user/login'
+  end
 end
 
 # get '/listings/edit' do
@@ -78,10 +85,15 @@ get '/user/preferences' do
 end
 
 get '/user/listings' do 
-  erb :'user/listings'
+  if current_user
+    erb :'user/listings'
+  else
+    redirect 'listings/map'
+  end
 end
 
 post '/listings/map' do
+
   max_price = (params[:price].empty?) ? 1000000 : params[:price]
   min_area = (params[:area].empty?) ? 0 : params[:area]
   min_bedrooms = (params[:bedrooms].empty?) ? 0 : params[:bedrooms]
@@ -93,17 +105,24 @@ post '/listings/map' do
     min_bedrooms, 
     min_bathrooms
     )
-  erb :'listings/map'
+  json({listings: @listings}) 
+
 end
 
 get '/user/login' do
+  @notoolbar = true
   erb :'user/login'
+end
+
+get '/user/logout' do 
+  session[:user] = nil
+  redirect '/'
 end
 
 post '/user/login' do
   @user = User.find_by username: params[:username]
   if @user && @user.password == params[:password]
-    session[:user_id] = @user.id
+    session[:user] = @user
     redirect '/listings/map'
   else
     redirect '/'
@@ -111,7 +130,17 @@ post '/user/login' do
 end
 
 get '/user/create' do
+  @notoolbar = true
   erb :'user/create'
+end
+
+post '/user' do 
+  @user = User.new(params)
+  if @user.save
+    redirect '/'
+  else
+    erb :'user/create'
+  end
 end
 
 # post '/user/logout' do
