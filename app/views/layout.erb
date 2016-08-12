@@ -3,18 +3,17 @@
 <head>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-  <script src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
   <script src="../javascript/application.js"></script>
 
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbD_DJTXLyK3IpRu0BZFOyxPYDcMu5bGk"></script>
   <script type="text/javascript" src="/javascript/jquery.googlemap.js"></script>
   <script src="//cdn.jsdelivr.net/jquery.sidr/2.2.1/jquery.sidr.min.js"></script>
-  <script type="text/javascript" src="/js/bootstrap.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../css/bootstrap.css" >
-  <link rel="stylesheet" href="../css/bootstrap-theme.css" >
-  <link rel="stylesheet" href="../css/application.css" >
+  <link rel="stylesheet" href="/css/bootstrap.css" >
+  <link rel="stylesheet" href="/css/bootstrap-theme.css" >
+  <link rel="stylesheet" href="/css/application.css" >
   <link rel="stylesheet" href="/css/jquery.sidr.dark.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Raleway:700,300,400">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Montserrat:400" type="text/css">
@@ -31,6 +30,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if current_user %>
+
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> My Account <span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -39,7 +39,9 @@
               <li role="presentation"><a href="/user/logout"> Logout </a></li>
             </ul>
           </li>
+
         <% else %>
+
           <form class="navbar-form navbar-left" method="post" action="/user/login">
             <div class="form-group">
               <input type="text" name="username" class="form-control" placeholder="Username" value="<%= @user && @user.username %>">
@@ -47,14 +49,20 @@
             </div>
             <button type="submit" class="btn btn-warning">Login</button>
           </form>
+
           <li role="presentation"><a href="/user/create">Don't have an account?</a></li>
+        
         <% end %>
       </ul>
+
       <ul class="nav navbar-nav navbar-right">
         <% if @listings %>
-          <li role="presentation"><a id="simple-menu" href="#sidr" class="glyphicon glyphicon-menu-hamburger"></a></li>
+          <li role="presentation">
+            <a id="simple-menu" href="#sidr" class="glyphicon glyphicon-menu-hamburger"></a>
+          </li>
         <% end %>
       </ul>
+
     </div>
   </div>
 </nav>
