@@ -1,21 +1,55 @@
-<div id="overlay" style="opacity: 0.5;"></div>
-
+<!-- <div id="overlay" style="opacity: 0.5;"></div>
+ -->
 <div id="contents" class="text-center">  
   <h1 id="heading">Lighthouse Listings <br/><small>Rentals in the Greater Vancouver area</small></h1>
 
   <div id="maindv">
     <div id="map" style="min-width: 850px; min-height: 600px;"></div>
   </div>
+
+<a id="simple-menu" href="#sidr">Toggle menu</a>
+
+<div id="sidr">
+  <!-- Your content -->
+  <h1>Search preferences:</h1>
+
+  <div>
+    <form method="post" action="/listings/map">
+      <div>
+        <label>Maximum Budget:</label>
+        <input type="text" name="price" value="<%= @listing && @listing.price %>">
+      </div>
+      <div>
+        <label>Minimum Square Footage:</label>
+        <input type="text" name="area" value="<%= @listing && @listing.area %>">
+      </div>
+      <div>
+        <label>Minimum Bedrooms?</label>
+        <input type="text" name="bedrooms" value="<%= @listing && @listing.bedrooms %>">
+      </div>
+      <div>
+        <label>Minimum Bathrooms?</label>
+        <input type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
+      </div>
+      <div>
+        <input type="submit" name="submit">
+      </div>
+    </form>
+  </div>
+</div>
+
+
 </div>
 
 <script>
   $(document).ready(function() {
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+    $('#simple-menu').sidr({
+      side: 'right'
+    });
     $("#map").googleMap({
         coords: [49.2827, -123.1207],
         zoom: 12
     });
-    
   <% @listings.each do |listing| %>
     $("#map").addMarker({
       coords: [
@@ -25,50 +59,8 @@
       text: '<p>Price: <%= listing.price %></p> <p>Area: <%= listing.area %></p>'
     });
   <% end %>
+
   });
-
 </script>
-
-<div>
-  <h1>Search preferences:</h1>
-</div>
-
-<div>
-  <% if @listing && @listing.errors.any? %>
-  <div>
-    <strong>Oops! Something bad happened!</strong>
-    <ul>
-      <% @listing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-</div>
-
-<div>
-
-  <form method="post" action="/listings/map">
-    <div>
-      <label>Maximum Budget:</label>
-      <input type="text" name="price" value="<%= @listing && @listing.price %>">
-    </div>
-    <div>
-      <label>Minimum Square Footage:</label>
-      <input type="text" name="area" value="<%= @listing && @listing.area %>">
-    </div>
-    <div>
-      <label>Minimum Bedrooms?</label>
-      <input type="text" name="bedrooms" value="<%= @listing && @listing.bedrooms %>">
-    </div>
-    <div>
-      <label>Minimum Bathrooms?</label>
-      <input type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
-    </div>
-    <div>
-      <input type="submit" name="submit">
-    </div>
-  </form>
 
 </div>
