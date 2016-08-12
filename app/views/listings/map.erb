@@ -16,8 +16,9 @@
   <p>Enter your search preferences below to filter the map!</p>
   <br>
 
+
   <div class="search-form">
-    <form method="post" action="/listings/map">
+    <form id="map_form">
       <div>
         <input placeholder="Maximum Budget:" type="text" name="price" value="<%= @listing && @listing.price %>">
       </div>
@@ -31,12 +32,15 @@
         <input placeholder="Minimum Bathrooms?" type="text" name="bathrooms" value="<%= @listing && @listing.bathrooms %>">
       </div>
       <div>
+
         <input class="btn btn-warning" type="submit" name="submit">
         <br>
         <br>
         <a id="close-menu" href="#sidr"> Close </a>
+
       </div>
     </form>
+
   </div>
 
   <br>
@@ -59,8 +63,8 @@
   </div>
 </div>
 
-
 </div>
+
 
 <script>
   $(document).ready(function() {
@@ -77,7 +81,8 @@
     $("#map").googleMap({
         coords: [49.2827, -123.1207],
         zoom: 12
-    });
+});
+
   <% @listings.each do |listing| %>
     $("#map").addMarker({
       coords: [
