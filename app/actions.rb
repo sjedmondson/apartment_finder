@@ -22,7 +22,7 @@ helpers do
           min_bathrooms
         ).order(created_at: :desc).limit(6)
       else
-        listings = Listing.where("1 = 2")
+        listings = Listing.where("1 = 2") # we don't like freakouts.  temp code.
       end
     end
   end
