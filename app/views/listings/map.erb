@@ -14,10 +14,11 @@
   <h1>Search preferences:</h1>
 
   <div>
-    <form method="post" action="/listings/map">
+    <form id="map_form">
+    
       <div>
         <label>Maximum Budget:</label>
-        <input type="text" name="price" value="<%= @listing && @listing.price %>">
+        <input type="text" id="price" name="price" value="<%= @listing && @listing.price %>">
       </div>
       <div>
         <label>Minimum Square Footage:</label>
@@ -33,23 +34,28 @@
       </div>
       <div>
         <input type="submit" name="submit">
+        <a href="#" id="map_form">search</a>
       </div>
     </form>
+
   </div>
 </div>
 
-
 </div>
 
-<script>
-  $(document).ready(function() {
-    $('#simple-menu').sidr({
+
+<script>  
+$(document).ready(function() {
+   
+$('#simple-menu').sidr({
       side: 'right'
     });
+
     $("#map").googleMap({
         coords: [49.2827, -123.1207],
         zoom: 12
-    });
+});
+
   <% @listings.each do |listing| %>
     $("#map").addMarker({
       coords: [

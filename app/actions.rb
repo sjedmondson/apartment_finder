@@ -1,4 +1,6 @@
 # Homepage (Root path)
+require 'json'
+
 helpers do
   def current_user
     @user ||= User.find(session[:user_id]) if session[:user_id]
@@ -16,6 +18,7 @@ end
 get '/listings/map' do
   @listings = Listing.all
   erb :'listings/map'
+
 end
 
 get '/listings/create' do
@@ -43,6 +46,7 @@ get '/user/preferences' do
 end
 
 post '/listings/map' do
+
   max_price = (params[:price].empty?) ? 1000000 : params[:price]
   min_area = (params[:area].empty?) ? 0 : params[:area]
   min_bedrooms = (params[:bedrooms].empty?) ? 0 : params[:bedrooms]
@@ -50,7 +54,8 @@ post '/listings/map' do
   @listings = Listing.where(
     "price < ? AND area > ? AND bedrooms > ? AND bathrooms > ?",max_price, min_area, min_bedrooms, min_bathrooms
     )
-  erb :'listings/map'
+  json({listings: @listings}) 
+
 end
 
 get '/user/login' do
