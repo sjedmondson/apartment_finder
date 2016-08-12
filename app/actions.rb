@@ -99,10 +99,15 @@ get '/user/login' do
   erb :'user/login'
 end
 
+get '/user/logout' do 
+  session[:user] = nil
+  redirect '/'
+end
+
 post '/user/login' do
   @user = User.find_by username: params[:username]
   if @user && @user.password == params[:password]
-    session[:user_id] = @user.id
+    session[:user] = @user
     redirect '/listings/map'
   else
     redirect '/'
