@@ -1,5 +1,7 @@
 class Listing < ActiveRecord::Base
 
+  belongs_to :user
+
   validates :street_address,
     presence: true
 
