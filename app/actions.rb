@@ -112,3 +112,7 @@ end
 get '/user/create' do
   erb :'user/create'
 end
+
+# post '/user/logout' do
+
+# end
