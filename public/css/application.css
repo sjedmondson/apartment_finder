@@ -1,7 +1,7 @@
 .navbar {
   color: #7b522f;
   font-size: 17px;
-  padding: 30px 25px 0px 25px;
+  padding: 10px 25px 0px 25px;
   text-decoration: none;
 }
 
@@ -33,7 +33,7 @@ a {
   color: #7b522f;
   font-size:50px;
   font-family: 'Montserrat', sans-serif; 
-  padding-top: 200px;
+  padding-top: 180px;
   font-weight: 400;
   z-index: 5;
   overflow: auto;
@@ -107,9 +107,6 @@ a {
   width: 300px;
 }
 
-
-
-
 .inputs > div.form-group:first-child > input.form-control {
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
@@ -127,6 +124,41 @@ a {
 .inputs > div.form-group > input {
   font-size: 23px;
   padding: 25px;
+}
+
+.form-control {
+ width: 300px
+}
+.form-horizontal
+{
+  text-align: center;
+    display: inline-table;
+}
+
+.form-control::-moz-placeholder {
+  color: #999;
+  opacity: 0.3;
+}
+
+.form-control:-ms-input-placeholder {
+  color: #999;
+  opacity: 0.3;
+}
+.form-control::-webkit-input-placeholder {
+  color: #999;
+  opacity: 0.3;
+}
+.h1 
+{
+  color: rgb(160, 110, 71);
+}
+.control-label 
+{
+  color: rgb(150, 108, 75);
+}
+#divlogin
+{
+  padding-top: 180px;
 }
 
 .layout-signup-container {
