@@ -1,5 +1,7 @@
+<div id="overlay" style="opacity: 0.5;"></div>
 
-<div class="container style-signup-container layout-signup-container">
+<div id="contents" class="text-center"> 
+
   <div class="row">
 
   <% if @user && @user.errors %>
@@ -19,26 +21,27 @@
   <% end %>
 
   </div>
-  <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <div class="layout-signup-box style-signup-box">
-        <h1> Signup </h1>
-        <form method="post" action="/user">
+  <div id="divform">
+        <h1 class="h1"> Signup </h1>
+        <br />
+        <form method="post" action="/user" class="form-horizontal">
           <div class="form-group">
-            <input class="form-control" type="text" id="username" value="<%= @user&&@user.username %>" placeholder="Username" name="username">
-            <input class="form-control" type="password" id="password" value="<%= @user&&@user.password %>" placeholder="Password" name="password">
-            <input class="form-control" type="text" id="email" value="<%= @user&&@user.email %>" placeholder="Email" name="email">
+            <input class="form-control input-lg" type="text" id="username" value="<%= @user&&@user.username %>" placeholder="Username" name="username">
           </div>
-          <footer>
+          <div class="form-group">  
+            <input class="form-control input-lg" type="password" id="password" value="<%= @user&&@user.password %>" placeholder="Password" name="password">
+          </div>
+          <div class="form-group">
+            <input class="form-control input-lg" type="text" id="email" value="<%= @user&&@user.email %>" placeholder="Email" name="email">
+          </div>
+          <div class="footer text-center">
             <button class="btn btn-warning" type="submit">Submit</button>
             <br>
             <br>
             <a class="layout return" href="/">Actually, I don't want to sign up.</a>
-          </footer>
+          </div>
         </form>
-      </div>
+      
     </div>
-    <div class="col-md-4"></div>
+    
   </div>
-<div class="container">

@@ -1,6 +1,6 @@
-<div class="container">
-<div class="row">
-<div class="col-md-12">
+<div id="overlay" style="opacity: 0.5;"></div>
+
+<div id="contents" class="text-center"> 
 
 <div class="create-form-container">
   <div>
@@ -16,7 +16,7 @@
   </div>
 
 
-<div class="text-center">
+<div id="divform">
   <h1 class="h1">Post a listing</h1>
   <form method="post" action="/listings" values="<%= current_user.id %>" class="form-horizontal">
 
@@ -35,14 +35,12 @@
       <div class="form-group">
         <input placeholder="No. of bathrooms" type="text" name="bathrooms" class="form-control input-lg" value="<%= @listing && @listing.bathrooms %>">
       </div>
-    </div>
+
     <div class="footer text-center">
       <input class="btn btn-warning" type="submit" name="submit">
     </div>
   </form>
 </div>
 
-</div>
-</div>
 </div>
 </div>

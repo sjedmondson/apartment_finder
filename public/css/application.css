@@ -3,6 +3,7 @@
   font-size: 17px;
   padding: 10px 25px 0px 25px;
   text-decoration: none;
+  z-index: 2;
 }
 
 a {
@@ -29,6 +30,12 @@ a {
   margin-bottom: 50px;
 }
 
+#divform{
+  z-index: 1;
+  overflow: auto;
+  position: relative;
+}
+
 #title {
   color: #7b522f;
   font-size:50px;
@@ -43,7 +50,6 @@ a {
 #overlay {
     background: linear-gradient(60deg, rgb(255, 78, 80) 10%, rgb(249, 212, 35) 90%);
     position: fixed;
-    display: block;
     left: 0px;
     top: 0px;
     width: 100%;
@@ -54,26 +60,28 @@ a {
     -webkit-transition: opacity 1s ease;
 }
 
+
 #landing {
-  z-index: 5;
+  z-index: 1;
   overflow: auto;
   position: relative;
-  margin-top: 80px;
+  margin-top: 10px;
 }
 
 #heading {
   color: #7b522f;
-  font-size:40px;
+  font-size:50px;
   font-family: 'Montserrat', sans-serif; 
   padding: 20px 0px 20px 10px;
   font-weight: 400;
-  z-index: 5;
+  z-index: 1;
   overflow: auto;
   position: relative;
+  line-height: 35px;
 }
 
 #heading small {
-  color: #7b522f;
+  color: #9a673c;
   font-size:20px;
   font-family: 'Montserrat', sans-serif; 
   font-weight: 400;
@@ -95,12 +103,7 @@ a {
 #map-container {
   width: 100px;
 }
-#landing {
-  z-index: 5;
-  overflow: auto;
-  position: relative;
-  margin-top: 10px;
-}
+
 
 .inputs > div.form-group {
   margin-bottom:0px;
@@ -163,7 +166,7 @@ a {
 
 .layout-signup-container {
   margin: auto;
-  padding-top: 200px;
+  padding-top: 40px;
   padding-bottom: 200px;
   vertical-align: middle; }
 
@@ -175,10 +178,11 @@ a {
     border-radius: 0px;
     font-size: 20px;
     padding: 25px; }
-    .style-signup-container .style-signup-box .form-control:first-of-type {
+
+.style-signup-container .style-signup-box .form-control:first-of-type {
       border-top-right-radius: 5px;
       border-top-left-radius: 5px; }
-    .style-signup-container .style-signup-box .form-control:last-of-type {
+.style-signup-container .style-signup-box .form-control:last-of-type {
       border-bottom-left-radius: 5px;
       border-bottom-right-radius: 5px; }
 
@@ -188,3 +192,50 @@ a {
   outline-color: black;
   margin-top: 20px;
 }
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #f9f4f2;
+    -webkit-background-clip: padding-box;
+    border-radius: 8px;
+    opacity: 0.5;
+    border:0;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: normal;
+    line-height: 1.42857143;
+    color: #423122;
+    white-space: nowrap;
+}
+
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+    border-color: #337ab7;
+}
+.nav .open > a, .nav .open > a:hover {
+    color:#7b522f;
+}
+
+#sidr p {
+  color: #eeac4a;
+  font-size: 13px;
+}
+
+#sidr form placeholder{
+  color:red;
+}
+
