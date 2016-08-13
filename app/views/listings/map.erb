@@ -4,10 +4,8 @@
   <h1 id="heading">Lighthouse Listings <br/><small>Rentals in the Greater Vancouver area</small></h1>
 
   <div id="maindv">
-    <div id="map" style="min-width: 850px; min-height: 600px;"></div>
+    <div id="map" style="min-width: 600px; min-height: 600px;"></div>
   </div>
-
-<a id="simple-menu" href="#sidr">Toggle menu</a>
 
 <div id="sidr">
   <!-- Your content -->
@@ -44,13 +42,16 @@
   </div>
 
   <br>
-  <br>
 
   <div class="notified-listings">
   <% if @notifications %>
+
+  <h1> Recent listings that matched your search: </h1>
+  <br>
+
     <% @notifications.each do |notification| %>
       <div class="notification">
-        <p> <%= notification.user %> made a listing: 
+        <p> <%= notification.user.username.capitalize %> made a listing: 
         <%= notification.bedrooms %> Bedrooms, 
         <%= notification.bathrooms %> Bathrooms, 
         <%= notification.area %> square feet, 
@@ -88,8 +89,8 @@
       coords: [
         <%= listing.latitude %>, 
         <%= listing.longitude %>],
-      title: "Rental!",
-      text: '<p>Price: <%= listing.price %></p> <p>Area: <%= listing.area %></p>'
+      title: " ",
+      text: '<h4><%= listing.street_address %></h4><p>Email: <%= listing.user.email %></p><p>$<%= listing.price %>/month</p> <p><%= listing.area %> square feet</p>'
     });
   <% end %>
 

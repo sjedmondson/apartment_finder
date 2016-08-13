@@ -62,8 +62,9 @@ end
 #   @listing.created_at.to_s
 # end
 
-post '/listings/create' do
+post '/listings' do
   @listing = Listing.new(
+    user_id: params[:user_id],
     price: params[:price],
     area: params[:area],
     street_address: params[:street_address],
@@ -72,6 +73,20 @@ post '/listings/create' do
     user_id: current_user.id
     )
   if @listing.save
+    redirect '/listings/map'
+  else
+    erb :'listings/create'
+  end
+end
+
+post '/user/preferences' do
+  current_user.preference.update(
+    max_price: params[:price],
+    min_area: params[:area],
+    min_bedrooms: params[:bedrooms],
+    min_bathrooms: params[:bathrooms]
+    )
+  if current_user.preference.save
     redirect '/listings/map'
   else
     erb :'listings/create'
