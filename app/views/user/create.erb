@@ -1,23 +1,44 @@
-<div id="divlogin" class="text-center">
-  <form method="post" action="/user/login" class="form-horizontal">
-    <div  class="form-group form-group-lg">
-    <label class="col-sm-4 control-label" for="email">User Name</label>
-      <div class="col-sm-3">
-        <input type="text" class="form-control input-lg" name="user_name" placeholder="User Name" value="" >
-      </div>  
-    </div>      
-    <div class="form-group form-group-lg">
-      <label class="col-sm-4 control-label" for="password">Password</label>
-      <div class="col-sm-3">
-        <input type="password" class="form-control input-lg" name="password" placeholder="Password" value="">
-      </div>  
-    </div>  
-    <div class="form-group form-group-lg">
-      <div class="col-sm-offset-2 col-sm-10">
-        <input type="submit" class="btn btn-primary btn-lg" value="Login" >
-        <!-- <input type="reset" class="btn btn-warning btn-lg" value="Clear" > -->
-        <a class="btn btn-warning btn-lg" href="/signup">Signup</a>
-      </div>   
+
+<div class="container style-signup-container layout-signup-container">
+  <div class="row">
+
+  <% if @user && @user.errors %>
+    <div class="style-error-box">
+      <% @user.errors.full_messages.each do |message| %>
+          <div class = "row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+              <div class="alert alert-danger">
+                <%= message %>
+              </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+      <% end %>
     </div>
-  </form>
-</div>
+  <% end %>
+
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="layout-signup-box style-signup-box">
+        <h1> Signup </h1>
+        <form method="post" action="/user">
+          <div class="form-group">
+            <input class="form-control" type="text" id="username" value="<%= @user&&@user.username %>" placeholder="Username" name="username">
+            <input class="form-control" type="password" id="password" value="<%= @user&&@user.password %>" placeholder="Password" name="password">
+            <input class="form-control" type="text" id="email" value="<%= @user&&@user.email %>" placeholder="Email" name="email">
+          </div>
+          <footer>
+            <button class="btn btn-warning" type="submit">Submit</button>
+            <br>
+            <br>
+            <a class="layout return" href="/">Actually, I don't want to sign up.</a>
+          </footer>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+<div class="container">

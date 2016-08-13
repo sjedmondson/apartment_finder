@@ -159,3 +159,31 @@ a {
 {
   padding-top: 180px;
 }
+
+.layout-signup-container {
+  margin: auto;
+  padding-top: 200px;
+  padding-bottom: 200px;
+  vertical-align: middle; }
+
+.style-signup-container {
+  color: black;
+  text-align: center; }
+  .style-signup-container .style-signup-box .form-control {
+    border: 0px;
+    border-radius: 0px;
+    font-size: 20px;
+    padding: 25px; }
+    .style-signup-container .style-signup-box .form-control:first-of-type {
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px; }
+    .style-signup-container .style-signup-box .form-control:last-of-type {
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px; }
+
+.style-signup-box > form > footer > a {
+  color: white;
+  font-size: 18px;
+  outline-color: black;
+  margin-top: 20px;
+}
