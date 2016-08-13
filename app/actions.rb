@@ -28,6 +28,22 @@ helpers do
       end
     end
   end
+
+  def filter_listings
+    user = current_user
+    max_price = user.preference.max_price
+    min_area = user.preference.min_area
+    min_bedrooms = user.preference.min_bedrooms
+    min_bathrooms = user.preference.min_bathrooms
+    listings = Listing.where(
+      "price < ? AND area > ? AND bedrooms > ? AND bathrooms > ?", 
+      max_price, 
+      min_area, 
+      min_bedrooms, 
+      min_bathrooms
+    )
+  end
+
 end
 
 get '/' do
@@ -39,8 +55,13 @@ get '/listings' do
 end
 
 get '/listings/map' do
-  @user = current_user
-  @listings = Listing.all
+
+  if current_user
+    @listings = filter_listings
+  else
+    @listings = Listing.all
+  end
+
   if current_user
     @notifications = get_notifications
   end
@@ -82,16 +103,13 @@ post '/listings' do
 end
 
 post '/user/preferences' do
-  current_user.preference.update(
-    max_price: params[:price],
-    min_area: params[:area],
-    min_bedrooms: params[:bedrooms],
-    min_bathrooms: params[:bathrooms]
-    )
-  if current_user.preference.save
+  @preference = current_user.preference
+  @preference.update(params)
+
+  if @preference.save
     redirect '/listings/map'
   else
-    erb :'listings/create'
+    erb :'/user/preferences'
   end
 end
 

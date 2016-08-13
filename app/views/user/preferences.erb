@@ -4,10 +4,10 @@
 
 <div class="create-form-container">
   <div>
-    <% if @listing && @listing.errors.any? %>
+    <% if @preference && @preference.errors.any? %>
       <div>
         <ul>
-          <% @listing.errors.full_messages.each do |message| %>
+          <% @preference.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
@@ -19,22 +19,23 @@
 
 <div class="text-center">
   <h1 class="h1">Add your preferences</h1>
+  <br>
   <form method="post" action="/user/preferences" class="form-horizontal">
       <div class="form-group">
-        <input placeholder="Monthly rent:" type="text" name="price" class="form-control input-lg" >
+        <input placeholder="Max. monthly rent" type="text" name="max_price" class="form-control input-lg">
       </div>
       <div class="form-group">
-        <input placeholder="Square feet:" type="text" name="area" class="form-control input-lg" >
+        <input placeholder="Min. square feet" type="text" name="min_area" class="form-control input-lg">
       </div>
       <div class="form-group">
-        <input placeholder="No. of bedrooms" type="text" name="bedrooms" class="form-control input-lg" >
+        <input placeholder="Min. number of bedrooms" type="text" name="min_bedrooms" class="form-control input-lg" >
       </div>
       <div class="form-group">
-        <input placeholder="No. of bathrooms" type="text" name="bathrooms" class="form-control input-lg" >
+        <input placeholder="Min. number of bathrooms" type="text" name="min_bathrooms" class="form-control input-lg" >
       </div>
     </div>
     <div class="footer text-center">
-      <input class="btn btn-warning" type="submit" name="Add">
+      <input class="btn btn-warning" type="submit" value="Save">
     </div>
   </form>
 </div>

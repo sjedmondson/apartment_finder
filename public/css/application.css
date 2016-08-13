@@ -127,7 +127,7 @@ a {
 }
 
 .form-control {
- width: 300px
+ min-width: 300px
 }
 .form-horizontal
 {
