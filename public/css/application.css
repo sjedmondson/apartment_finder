@@ -17,11 +17,12 @@ a {
 #maindv {
   text-align: left;
   background: rgba(255,255,255,0.9);
-  padding: 20px 12px 25px 30px;
-  width: 950px;
-  margin: auto;
-  margin-top: 10px;
-  border-radius:18px; 
+  padding: 10px;
+  min-height: 600px;
+  min-width: 600px;
+  margin-right: 200px;
+  margin-left: 200px;
+  border-radius: 18px;
   z-index: 4;
   overflow: auto;
   position: relative;

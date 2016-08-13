@@ -17,6 +17,7 @@
 
   <h1>Post a listing:</h1>
   <form method="post" action="/listings/create">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>"/>
     <div class="inputs">
       <div class="form-group">
         <input placeholder="Street address:" type="text" name="street_address" class="form-control" value="<%= @listing && @listing.street_address %>">

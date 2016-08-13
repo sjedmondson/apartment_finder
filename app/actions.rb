@@ -67,6 +67,7 @@ end
 
 post '/listings/create' do
   @listing = Listing.new(
+    user_id: params[:user_id],
     price: params[:price],
     area: params[:area],
     street_address: params[:street_address],
