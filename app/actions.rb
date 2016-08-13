@@ -70,6 +70,20 @@ post '/listings' do
   end
 end
 
+post '/user/preferences' do
+  current_user.preference.update(
+    max_price: params[:price],
+    min_area: params[:area],
+    min_bedrooms: params[:bedrooms],
+    min_bathrooms: params[:bathrooms]
+    )
+  if current_user.preference.save
+    redirect '/listings/map'
+  else
+    erb :'listings/create'
+  end
+end
+
 get '/user/preferences' do
   erb :'user/preferences'
 end

@@ -15,31 +15,34 @@
     <% end %>
   </div>
 
-  <h1>Post a listing:</h1>
-  <form method="post" action="/listings">
-    <div class="inputs">
+
+
+<div class="text-center">
+  <h1 class="h1">Post a listing</h1>
+  <form method="post" action="/listings" class="form-horizontal">
       <div class="form-group">
-        <input placeholder="Street address:" type="text" name="street_address" class="form-control" value="<%= @listing && @listing.street_address %>">
+        <input placeholder="Street address:" type="text" name="street_address" class="form-control input-lg" value="<%= @listing && @listing.street_address %>">
       </div>
       <div class="form-group">
-        <input placeholder="Monthly rent:" type="text" name="price" class="form-control" value="<%= @listing && @listing.price %>">
+        <input placeholder="Monthly rent:" type="text" name="price" class="form-control input-lg" value="<%= @listing && @listing.price %>">
       </div>
       <div class="form-group">
-        <input placeholder="Square feet:" type="text" name="area" class="form-control" value="<%= @listing && @listing.area %>">
+        <input placeholder="Square feet:" type="text" name="area" class="form-control input-lg" value="<%= @listing && @listing.area %>">
       </div>
       <div class="form-group">
-        <input placeholder="No. of bedrooms" type="text" name="bedrooms" class="form-control" value="<%= @listing && @listing.bedrooms %>">
+        <input placeholder="No. of bedrooms" type="text" name="bedrooms" class="form-control input-lg" value="<%= @listing && @listing.bedrooms %>">
       </div>
       <div class="form-group">
-        <input placeholder="No. of bathrooms" type="text" name="bathrooms" class="form-control" value="<%= @listing && @listing.bathrooms %>">
+        <input placeholder="No. of bathrooms" type="text" name="bathrooms" class="form-control input-lg" value="<%= @listing && @listing.bathrooms %>">
       </div>
     </div>
-    <div class="footer">
+    <div class="footer text-center">
       <input class="btn btn-warning" type="submit" name="submit">
     </div>
   </form>
 </div>
 
+</div>
 </div>
 </div>
 </div>

@@ -1,3 +1,45 @@
-<div>
-  <a href="/listings/map"><button>Back to Listings</button></a>
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+
+<div class="create-form-container">
+  <div>
+    <% if @listing && @listing.errors.any? %>
+      <div>
+        <ul>
+          <% @listing.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+
+
+<div class="text-center">
+  <h1 class="h1">Add your preferences</h1>
+  <form method="post" action="/user/preferences" class="form-horizontal">
+      <div class="form-group">
+        <input placeholder="Monthly rent:" type="text" name="price" class="form-control input-lg" >
+      </div>
+      <div class="form-group">
+        <input placeholder="Square feet:" type="text" name="area" class="form-control input-lg" >
+      </div>
+      <div class="form-group">
+        <input placeholder="No. of bedrooms" type="text" name="bedrooms" class="form-control input-lg" >
+      </div>
+      <div class="form-group">
+        <input placeholder="No. of bathrooms" type="text" name="bathrooms" class="form-control input-lg" >
+      </div>
+    </div>
+    <div class="footer text-center">
+      <input class="btn btn-warning" type="submit" name="Add">
+    </div>
+  </form>
+</div>
+
+</div>
+</div>
+</div>
 </div>
