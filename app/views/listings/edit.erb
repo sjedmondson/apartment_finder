@@ -15,23 +15,23 @@
     <% end %>
   </div>
 
-  <h1>Edit a listing:</h1>
-  <form method="post" action="">
+  <h1>Edit your listing:</h1>
+  <form method="post" action="/listing/<%= @listing.id %>">
     <div class="inputs">
       <div class="form-group">
-        <input placeholder="Street address:" type="text" name="street_address" class="form-control" value="<%= @listing && @listing.street_address %>">
+        <input placeholder="Street address:" type="text" name="listing[street_address]" class="form-control" value="<%= @listing && @listing.street_address %>">
       </div>
       <div class="form-group">
-        <input placeholder="Monthly rent:" type="text" name="price" class="form-control" value="<%= @listing && @listing.price %>">
+        <input placeholder="Monthly rent:" type="text" name="listing[price]" class="form-control" value="<%= @listing && @listing.price %>">
       </div>
       <div class="form-group">
-        <input placeholder="Square feet:" type="text" name="area" class="form-control" value="<%= @listing && @listing.area %>">
+        <input placeholder="Square feet:" type="text" name="listing[area]" class="form-control" value="<%= @listing && @listing.area %>">
       </div>
       <div class="form-group">
-        <input placeholder="No. of bedrooms" type="text" name="bedrooms" class="form-control" value="<%= @listing && @listing.bedrooms %>">
+        <input placeholder="No. of bedrooms" type="text" name="listing[bedrooms]" class="form-control" value="<%= @listing && @listing.bedrooms %>">
       </div>
       <div class="form-group">
-        <input placeholder="No. of bathrooms" type="text" name="bathrooms" class="form-control" value="<%= @listing && @listing.bathrooms %>">
+        <input placeholder="No. of bathrooms" type="text" name="listing[bathrooms]" class="form-control" value="<%= @listing && @listing.bathrooms %>">
       </div>
     </div>
     <div class="footer">
