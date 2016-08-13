@@ -2,12 +2,9 @@
   <h1>My Listings</h1>
 </div>
 <div>
-  <img src="http://placehold.it/350x300"> 
-  <img src="http://placehold.it/350x300"> 
-  <img src="http://placehold.it/350x300"> 
-</div>
-<div>
-  <img src="http://placehold.it/350x300"> 
-  <img src="http://placehold.it/350x300"> 
-  <img src="http://placehold.it/350x300"> 
+  <% @listings.each do |listing| %>
+    <div>
+      <a href="/listings/<%= listing.id %>/edit">Address: <%= listing.street_address %></a>
+    </div>
+  <% end %> 
 </div>

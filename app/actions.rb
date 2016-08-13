@@ -10,8 +10,6 @@ helpers do
     if current_user
       if current_user.preference
         user = current_user
-        puts "what's in user here?"
-        p user
         max_price = user.preference.max_price
         min_area = user.preference.min_area
         min_bedrooms = user.preference.min_bedrooms
@@ -45,7 +43,6 @@ get '/listings/map' do
     @notifications = get_notifications
   end
   erb :'listings/map'
-
 end
 
 get '/listings/create' do
@@ -71,7 +68,8 @@ post '/listings/create' do
     area: params[:area],
     street_address: params[:street_address],
     bedrooms: params[:bedrooms],
-    bathrooms: params[:bathrooms]
+    bathrooms: params[:bathrooms],
+    user_id: current_user.id
     )
   if @listing.save
     redirect '/listings/map'
@@ -84,8 +82,10 @@ get '/user/preferences' do
   erb :'user/preferences'
 end
 
-get '/user/listings' do 
-  if current_user
+get '/user/listings' do
+  user = current_user
+  if user
+    @listings = user.listings
     erb :'user/listings'
   else
     redirect 'listings/map'
@@ -121,7 +121,7 @@ end
 
 post '/user/login' do
   @user = User.find_by username: params[:username]
-  if @user && @user.password == params[:password]
+  if @user && @user.password == params[:password]   # please do not use such bad security ever again
     session[:user] = @user
     redirect '/listings/map'
   else
@@ -143,6 +143,18 @@ post '/user' do
   end
 end
 
-# post '/user/logout' do
+get '/listings/:id/edit' do
+  @listing = Listing.find(params[:id])
+  erb :'listings/edit'
+end
 
-# end
+post '/listing/:id' do
+  @listing = Listing.find(params[:id])
+  if @listing.update(params[:listing])
+    redirect '/user/listings'
+  else
+    erb :'listings/edit'
+  end
+  
+end
+
