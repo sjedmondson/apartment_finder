@@ -25,6 +25,12 @@
         <h1 class="h1"> Signup </h1>
         <br />
         <form method="post" action="/user" class="form-horizontal">
+        <div class="form-group">
+            <input class="form-control input-lg" type="text" value="<%= @user&&@user.first_name %>" placeholder="First name" name="first_name">
+          </div>
+          <div class="form-group">
+            <input class="form-control input-lg" type="text" value="<%= @user&&@user.last_name %>" placeholder="Last name" name="last_name">
+          </div>
           <div class="form-group">
             <input class="form-control input-lg" type="text" id="username" value="<%= @user&&@user.username %>" placeholder="Username" name="username">
           </div>
@@ -33,6 +39,9 @@
           </div>
           <div class="form-group">
             <input class="form-control input-lg" type="text" id="email" value="<%= @user&&@user.email %>" placeholder="Email" name="email">
+          </div>
+          <div class="form-group">
+            <input class="form-control input-lg" type="text" value="<%= @user&&@user.phone %>" placeholder="Phone number (XXX-XXX-XXXX)" name="phone">
           </div>
           <div class="footer text-center">
             <button class="btn btn-warning" type="submit">Submit</button>

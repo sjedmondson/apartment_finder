@@ -21,8 +21,9 @@ $(document).ready(function() {
                     coords: [
                       data.listings[i].latitude, 
                       data.listings[i].longitude],
-                    title: "Rental!",
-                    text: '<p>Price: ' + data.listings[i].price  +'</p> <p>Area:'+ data.listings[i].area +'</p>'
+                    title: data.listings[i].street_address,
+                    text: '<p>Price: $' + data.listings[i].price  +' monthly</p> <p>Area:'+ data.listings[i].area +' square feet</p>'
+                    
                   });
               }
                // var list = data.listings[i];

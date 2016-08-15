@@ -3,11 +3,12 @@ require 'bundler/setup'
 
 require 'active_support/all'
 
-# Load Sinatra Framework (with AR)
-require 'geocoder'
+# Load Sinatra Framework (with AR)'
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sinatra/contrib/all' # Requires cookies, among other things
+require 'geocoder'
+require 'carrierwave'
 
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 APP_NAME = APP_ROOT.basename.to_s

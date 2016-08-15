@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812194214) do
+ActiveRecord::Schema.define(version: 20160815020620) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string  "content"
+    t.integer "rating"
+    t.integer "user_id"
+    t.integer "listing_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "listing_id"
+    t.string  "image"
+  end
 
   create_table "listings", force: :cascade do |t|
     t.integer  "price"
@@ -28,16 +40,20 @@ ActiveRecord::Schema.define(version: 20160812194214) do
 
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "max_price"
-    t.integer "min_area"
-    t.integer "min_bedrooms"
-    t.integer "min_bathrooms"
+    t.integer "max_price",     default: 100000
+    t.integer "min_area",      default: 0
+    t.integer "min_bedrooms",  default: 0
+    t.integer "min_bathrooms", default: 0
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.string "email"
+    t.string  "username"
+    t.string  "password"
+    t.string  "email"
+    t.string  "phone"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.integer "average_rating"
   end
 
 end

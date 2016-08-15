@@ -50,12 +50,12 @@
 
     <% @notifications.each do |notification| %>
       <div class="notification">
-        <p> <%= notification.user.username.capitalize %> made a listing: 
+        <a href="/listings/<%= notification.id %>/details"><p> <%= notification.user.first_name.capitalize %> made a listing: 
         <%= notification.bedrooms %> Bedrooms, 
         <%= notification.bathrooms %> Bathrooms, 
         <%= notification.area %> square feet, 
         $<%= notification.price %> monthly at 
-        <%= notification.street_address %> </p>
+        <%= notification.street_address %> </p></a>
       </div>
     <% end %>
   <% end %>
@@ -89,7 +89,7 @@
         <%= listing.latitude %>, 
         <%= listing.longitude %>],
       title: " ",
-      text: '<h4><%= listing.street_address %></h4><p>Email: <%= listing.user.email %></p><p>$<%= listing.price %>/month</p> <p><%= listing.area %> square feet</p>'
+      text: '<h4><%= listing.street_address %></h4><p>Email: <%= listing.user.email %></p><p>$<%= listing.price %>/month</p> <p><%= listing.area %> square feet</p> <p><a href="/listings/<%= listing.id %>/details"> Click for details!</a></p>'
     });
   <% end %>
 

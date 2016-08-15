@@ -1,10 +1,22 @@
-<div>
-  <h1>My Listings</h1>
-</div>
-<div>
-  <% @listings.each do |listing| %>
-    <div>
-      <a href="/listings/<%= listing.id %>/edit">Address: <%= listing.street_address %></a>
+  <div id="overlay" style="opacity: 0.5;"></div>
+  <div id="contents" class="text-center"> 
+    <div class="container">
+      <div class="row">
+      <% @listings.each do |listing| %>
+        <div class="col-md-4">
+          <div class="owned-listing">
+            <div class="listing-header"><h3> <%= listing.street_address %> </h3></div>
+            <div class="listing-body">
+            <p> $<%= listing.price %> Monthly Rent</p>
+            <p> $<%= listing.area %> Square Feet </p>
+            <p> <%= listing.bedrooms %> Bedrooms </p>
+            <p> <%= listing.bathrooms %> Bathrooms </p>
+            <a class="btn btn-warning" href="/listings/<%= listing.id %>"> Edit </a>
+            <a class="btn btn-danger" href="/listings/<%= listing.id %>/destroy"> Delete </a>
+            </div>
+          </div>
+        </div>
+      <% end %> 
+      </div>
     </div>
-  <% end %> 
-</div>
+  </div>

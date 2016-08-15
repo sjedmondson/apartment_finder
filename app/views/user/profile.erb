@@ -1,0 +1,37 @@
+<div id="overlay" style="opacity: 0.5;"></div>
+<div class="container">
+<div class="row">
+
+<div id="contents" class="text-center"> 
+
+<div class="col-md-3">
+  <div class="user-details">
+    <p>Username: <%= @user.username %></p>
+    <p>Email: <%= @user.email %></p>
+    <% @user.listings.each do |listing| %>
+      <b><p> <%= listing.street_address %> </p></b>
+    <% end %>
+
+
+  </div>
+</div>
+
+<div class="col-md-9">
+  <h1> Recent Comments </h1>
+  <% @user.listings.each do |listing| %>
+    <div style="color: black;" class="listing">
+      <% listing.comments.each do |comment| %>
+        <div class="comment">
+          <%= comment.content %>
+        </div>
+      <% end %> 
+    </div>
+  <% end %>
+</div>
+
+</div>
+
+
+
+</div>
+</div>

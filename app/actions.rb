@@ -3,7 +3,7 @@ require 'json'
 
 helpers do
   def current_user
-    @user = User.find(session[:user]) if session[:user]
+    @user = User.find(session[:user].id) if session[:user]
   end
 
   def get_notifications
@@ -48,6 +48,26 @@ get '/' do
   erb :landing
 end
 
+post '/comments' do
+  @comment = Comment.new(
+    content: params[:content],
+    rating: params[:rating],
+    listing_id: params[:listing_id],
+    user_id: params[:user_id]
+  )
+  if @comment.save
+    redirect "/comments/#{params[:listing_id]}"
+  else
+    @listing = Listing.find(params[:listing_id])
+    erb :'comments/new'
+  end
+end
+
+get '/comments/:listing_id' do 
+  @listing = Listing.find(params[:listing_id])
+  erb :'comments/new'
+end
+
 get '/listings' do
   erb :'listings/index'
 end
@@ -74,9 +94,55 @@ get '/listings/create' do
   end
 end
 
-# get '/listings/edit' do
-#   erb :'listings/edit'
-# end
+post '/listings/map' do
+
+  max_price = (params[:price].empty?) ? 1000000 : params[:price]
+  min_area = (params[:area].empty?) ? 0 : params[:area]
+  min_bedrooms = (params[:bedrooms].empty?) ? 0 : params[:bedrooms]
+  min_bathrooms = (params[:bathrooms].empty?) ? 0 : params[:bathrooms]
+  @listings = Listing.where(
+    "price < ? AND area > ? AND bedrooms > ? AND bathrooms > ?",
+    max_price, 
+    min_area, 
+    min_bedrooms, 
+    min_bathrooms
+    )
+  json({listings: @listings}) 
+
+end
+
+get '/listings/:listing_id' do
+  @listing = Listing.find(params[:listing_id])
+  if @listing.user == current_user
+    erb :'listings/edit'
+  else
+    redirect '/user/listings'
+  end
+end
+
+post '/listing/:listing_id' do
+  @listing = Listing.find(params[:listing_id])
+  if @listing.update(params[:listing])
+    redirect '/user/listings'
+  else
+    erb :'listings/edit'
+  end
+end
+
+get '/listings/:listing_id/details' do
+  @listing = Listing.find(params[:listing_id])
+  erb :'/listings/details'
+end
+
+get '/listings/:listing_id/destroy' do
+  listing = Listing.find(params[:listing_id])
+  if listing.user = current_user
+    listing.destroy
+    redirect '/user/listings'
+  else
+    redirect '/users/listings'
+  end
+end
 
 # get '/listings/:listing_id' do 
 #   @listing = Listing.find(params[:listing_id])
@@ -85,14 +151,14 @@ end
 
 post '/listings' do
   @listing = Listing.new(
-    user_id: params[:user_id],
+    user_id: current_user.id,
     price: params[:price],
     area: params[:area],
     street_address: params[:street_address],
     bedrooms: params[:bedrooms],
     bathrooms: params[:bathrooms],
-    user_id: current_user.id
     )
+  @listing.images.new(image: params[:image]) if params[:image]
   if @listing.save
     redirect '/listings/map'
   else
@@ -123,23 +189,6 @@ get '/user/listings' do
   else
     redirect 'listings/map'
   end
-end
-
-post '/listings/map' do
-
-  max_price = (params[:price].empty?) ? 1000000 : params[:price]
-  min_area = (params[:area].empty?) ? 0 : params[:area]
-  min_bedrooms = (params[:bedrooms].empty?) ? 0 : params[:bedrooms]
-  min_bathrooms = (params[:bathrooms].empty?) ? 0 : params[:bathrooms]
-  @listings = Listing.where(
-    "price < ? AND area > ? AND bedrooms > ? AND bathrooms > ?",
-    max_price, 
-    min_area, 
-    min_bedrooms, 
-    min_bathrooms
-    )
-  json({listings: @listings}) 
-
 end
 
 get '/user/login' do
@@ -176,18 +225,8 @@ post '/user' do
   end
 end
 
-get '/listings/:id/edit' do
-  @listing = Listing.find(params[:id])
-  erb :'listings/edit'
-end
-
-post '/listing/:id' do
-  @listing = Listing.find(params[:id])
-  if @listing.update(params[:listing])
-    redirect '/user/listings'
-  else
-    erb :'listings/edit'
-  end
-  
+get '/user/profile' do
+  @user = current_user
+  erb :'user/profile'
 end
 
