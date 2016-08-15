@@ -1,6 +1,6 @@
 <div id="overlay" style="opacity:0.5;"></div>
 
-<div class="container-fluid">
+<div class="container-fluid" style="padding-bottom:50px">
 
   <% unless @listing.images.empty? %>
 
@@ -43,27 +43,32 @@
   <div class="row">
     <div class="col-md-2"></div>  
     <div class="col-md-10">
-      <h1>Address: <%= @listing.street_address %></h1>
-      <ul class="listing-details">
-        <li>$<%= @listing.price %> monthly</li>
-        <li><%= @listing.area %> square feet</li>
-        <li><%= @listing.bedrooms %> bedrooms</li>
-        <li><%= @listing.bathrooms %> bathrooms</li>
+      <h1 style="color:white"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> <%= @listing.street_address %></h1>
+      <ul class="listing-details" style="color:white; list-style-type:none">
+        <li><span class="glyphicon glyphicon-usd" aria-hidden="true" style="padding-right: 10px"></span> <%= @listing.price %> monthly</li>
+        <li><span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true" style="padding-right: 10px"></span> <%= @listing.area %> square feet</li>
+        <li><span class="glyphicon glyphicon-bed" aria-hidden="true" style="padding-right: 10px"></span><%= @listing.bedrooms %> bedrooms</li>
+        <li><span class="glyphicon glyphicon-object-align-left" aria-hidden="true" style="padding-right: 10px"></span><%= @listing.bathrooms %> bathrooms</li>
       </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-md-2"></div>  
     <div class="col-md-10">
-      <h2> Posting made by: <%= @listing.user.first_name %></h2>
-      <ul class="contact-details">
+      <h2 style="color:#ffd66e; font-size:18px;"> <i> 
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 
+      Posting made by: <%= @listing.user.first_name %></i></h2>
+      <ul class="contact-details" style="color:#ffd66e; font-size:15px">
         <li>Full name: <%= @listing.user.first_name %> <%= @listing.user.last_name %> </li>
         <li>Username: <%= @listing.user.username %></li>
         <li>Email: <%= @listing.user.email %></li>
         <li>Phone Number: <%= @listing.user.phone %> </li>
 
-        <a style="color:black;" href="/listings/map"><h3> Click here to go back to the map! </h3></a>
+        
       </ul>
+      <a style="color:white;" href="/listings/map"><h4>
+      <span class="glyphicon glyphicon-menu-left" aria-hidden="true" style="padding-right: 5px"> </span>Click here to go back to the map! </h4></a>
+      
     </div>
   </div>
 </div>
