@@ -40,10 +40,10 @@ ActiveRecord::Schema.define(version: 20160815020620) do
 
   create_table "preferences", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "max_price",     default: 100000
-    t.integer "min_area",      default: 0
-    t.integer "min_bedrooms",  default: 0
-    t.integer "min_bathrooms", default: 0
+    t.integer "max_price"
+    t.integer "min_area"
+    t.integer "min_bedrooms"
+    t.integer "min_bathrooms"
   end
 
   create_table "users", force: :cascade do |t|
